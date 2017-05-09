@@ -3,18 +3,30 @@
 module.exports = {
 	findMinMax: function(list) {
 		let result = [];
-		let min;
-		let max;
-		list = list.sort(function(a,b) {
-			return [a-b];
-		})
-		min = list[0];
-		max = list[list.length - 1];
+		let min = list[list.length - 1];
+		let max = list[0];
+		for (let i = min; i >= 0; i--) {
+			if (list[i] < min) {
+				min = list[i];
+				//return min;
+			}
+		}
+		for (let i = 0; i < list.length; i++) {
+			if (list[i] > max) {
+				max = list[i];
+				//return max;
+			}
+		}
 		if (min === max) {
 			result = [min];
 		} else {
-			result = [min, max];
+			result = [min,max];
 		}
 		return result;
 	}
 }
+
+
+
+
+
